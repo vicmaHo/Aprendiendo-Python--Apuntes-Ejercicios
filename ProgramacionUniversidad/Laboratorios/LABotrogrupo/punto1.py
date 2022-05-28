@@ -21,4 +21,6 @@ diferenciaGoles = golesAfavor - golesEnContra
 diferenciaGoles = abs(diferenciaGoles) # en caso de que quede negativo, abs lo pasara a positivo
 
 # salida de datos
-print(f"Nombre: {}")
+print(f"Nombre: {nombre_equipo},Partidos Juagados:{partidos_jugados} Partidos Ganados: {partidos_ganados}, \
+    Partidos perdidos: {partidos_perdidos}, Patidos Empatados: {partidos_empatados}, Puntos gandos: {puntos_totales} \
+    ")
