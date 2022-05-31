@@ -1,3 +1,7 @@
+# Un entero positivo n se llama perfecto si n es igual a la suma de todos sus divisores diferentes de él. 
+# Por ejemplo, 6 es perfecto porque 6=1+2+3. Escriba un programa que reciba como entrada un número entero 
+# positivo y retorne un booleano indicando si es perfecto o no.
+
 n = int(input())
 
 def numero_perfecto(n):
