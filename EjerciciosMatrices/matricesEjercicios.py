@@ -19,33 +19,41 @@ def sumaDigonal1():
                 suma += cuadro[f][c]
     return suma
                 
-def sumadiag11():
-    suma = 0
-    for f in range(0, n):
-        suma += cuadro[f][f]   # con esta hago que la f haga de fila y de columna, ira 1, 1; 2, 2
-    return suma 
+# def sumadiag11():
+#     suma = 0
+#     for f in range(0, n):
+#         suma += cuadro[f][f]   # con esta hago que la f haga de fila y de columna, ira 1, 1; 2, 2
+#     return suma 
 
 
 # Funcion para calular la diagonal secundaria
 def sumaDiagSecundaria():
+    columna = 0
     suma = 0
-    for f in range(len(cuadro), 0):
-        suma += cuadro[f][len(cuadro) - 1 - f]
-    print(suma)
+    for f in range(len(cuadro)-1, 0-1, -1):
+        suma += cuadro[f][columna]
+        columna += 1
+    return suma
     
 # Calcular la suma de los elementos encima de la diagonal superior
 def sumaTriangularSupe():
-    
-
-        
-
-
+    pass
 n = int(input("Digite el tamaño del cuadro PAR: "))
-cuadro = [[0 for i in range(n)] for j in range(n)]
+# cuadro = [[0 for i in range(n)] for j in range(n)]
+cuadro = [
+    [1,2,3,4],
+    [5,6,7,8],
+    [9,10,11,12],
+    [13,14,15,16]
+]
 # f = fila
 # c = columna
-for f in range(0, n):
-    for c in range(0, n):
-       # cuadro[f][c] = int(input("Digite cadrado[" + str(f) + "][" + str(c) + "]: "))
-       cuadro[f][c] = int(input(f"Digite cuadrado[{f}][{c}]: "))
-       
+# for f in range(0, n):
+#     for c in range(0, n):
+#        # cuadro[f][c] = int(input("Digite cadrado[" + str(f) + "][" + str(c) + "]: "))
+#        cuadro[f][c] = int(input(f"Digite cuadrado[{f}][{c}]: "))
+for i in cuadro:
+    print(i)
+print(f"Suma de la diagonal principal: {sumaDigonal1()}")
+print(f"Suma de la diagonal secundaria: {sumaDiagSecundaria()}")
+
