@@ -1,11 +1,7 @@
-## APUNTES CLASE 12 PROGRAMACION FUNCIONAL EN PYTHON
+## APUNTES PROGRAMACION FUNCIONAL EN PYTHON
 ## Recordatorio de lo visto anteriormente en funciones
 
 # definicion de funciones
-from doctest import FAIL_FAST
-from email.mime import multipart
-from syslog import LOG_DAEMON
-
 
 def saludar(nombre):
     print("Hola mundo" + str(nombre))
@@ -189,16 +185,4 @@ print(any[False, False, False])
 print(all([])) #el all de una lista vacia me da true
 print(any([])) # e lany de una lista vacia me da false,
       
-# EJERCICIO
-# Ejercicio
-# La empresa ABCD tiene hasta 100 empleados.  
-# La compañía decide crear un número de identificación único UID para cada uno de sus empleados.  
-# La compañía le ha asignado la tarea de validar los UIDs generados aleatoriamente.  
-# Un UID válido debe cumplir con las siguientes reglas:
-# * Debe contener por lo menos dos letras mayúsculas en el alfabeto inglés.
-# * Debe tener por lo menos 3 dígitos.
-# * Contener únicamente dígitos alfanuméricos.
-# * No tener repeticiones.
-# * Contener exactamente 10 caracteres.
-
 

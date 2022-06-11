@@ -1,7 +1,4 @@
 #  Imprimir en pantalla ---> print
-from pickle import TRUE
-
-
 print("Hello")
 # Entradas de datos
 input("Enter data: ") # Podemos transformar esto a diferentes datos indicando el tipo de dato anteriormente
