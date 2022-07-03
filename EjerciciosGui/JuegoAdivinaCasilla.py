@@ -8,6 +8,15 @@ un mensaje  Has Ganado o Has perdido y toddos los botones deben deshabilitarse
 
 from random import random, randint
 from tkinter import *
+from tkinter import ttk
+
+# funcion para deshabilitar o habilitar el tablero, se usa cuando se reinicia, se gana o se pierde
+def deshabilitarHabilitarTablero(mensaje, estado = DISABLED):
+    for i in range(4):
+        for j in range(4):
+            tablero[i][j]["state"] = estado
+    LMensaje["text"] = mensaje
+    
 # saber en que boton damos click, todos los botones acceden a la funcion
 def clickButton(m): # m -> numero de boton
     Breiniciar["state"] = NORMAL
@@ -16,53 +25,50 @@ def clickButton(m): # m -> numero de boton
     if intentos <= 3:
         if m == BotonEscondido:
             # desabilito todos los botones
-            for i in range(4):
-                for j in range(4):
-                    tablero[i][j]["state"] = DISABLED
-            # imprimo el mensake de ganar
-            LMensaje["text"] = "Has ganado"
-        else:
+            deshabilitarHabilitarTablero("HAS GANADO!!!! era el %d"% BotonEscondido) 
+        else: # deshabilito el boton en cuestion. Ya que no es el indicado
             # existen dos soluciones, enviar las coordenadas, o operar m para hallar fila y columna
             f = (m - 1) // 4 # hallo fila
             c = (m - 1) % 4  # hallo columna
             tablero[f][c]["state"] = DISABLED  # modifico la caracteristica estado = desabilitado, NORMAL cuando funciona
             LMensaje["text"] = f"Intenta de nuevo, no es el {m}, te quedan {4-intentos} intentos"
     else:
-        for i in range(4):
-            for j in range(4):
-                tablero[i][j]["state"] = DISABLED
-            LMensaje["text"] = "Perdiste :C"    
+        deshabilitarHabilitarTablero("Perdiste..... :c, era el %d" % BotonEscondido) 
             
 def reiniciar():
     global intentos
     global BotonEscondido
     intentos = 1
     BotonEscondido = randint(1, 16)
-    print(BotonEscondido)
-    print(intentos)
-    for i in range(4):
-            for j in range(4):
-                tablero[i][j]["state"] = NORMAL
-        # imprimo el mensake de ganar
-            LMensaje["text"] = "Juego reiniciado"
-
-
-intentos = 1
-# genero el boton aleatorio
-# randint(1, 16) # con un randint es mucho mas facil lo de abajo
-BotonEscondido = round(random()*15) + 1 # con round obtengo un numero del 0 al 15, + 1, 16, y con round 
-print(BotonEscondido)
+    #print(BotonEscondido)
+    deshabilitarHabilitarTablero("HA JUGAR!!!", NORMAL)
+    Breiniciar["state"] = DISABLED
 
 # genero la ventana
 ventana = Tk()
-ventana.title("Adivina la casilla")
-ventana.geometry("400x300")
+ventana.title("Adivina la casilla!!!")
+ventana.resizable(False, False) # posibilidad de cambiar el tamaño de la ventana
+# centro la ventana
+# Tamaño de la ventana
+window_width = 500
+window_height = 300
 
+# Tamaño de pantalla
+screen_width = ventana.winfo_screenwidth()
+screen_height = ventana.winfo_screenheight()
 
-Breiniciar = Button(ventana, text="Reiniciar", command=reiniciar, state=DISABLED)
-LMensaje = Label(ventana, text="")
-tablero = [[Button(ventana, text="")for x in range(4)]for y in range(4)] # crecion de la matriz
-                                                                        # de 4 x 4
+# encuentro el punto del centro
+center_x = int(screen_width/2 - window_width / 2)
+center_y = int(screen_height/2 - window_height / 2)
+
+# Cambio de tamaño y posición
+ventana.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
+
+# genero los elementos de la interfaz
+Breiniciar = ttk.Button(ventana, text="Reiniciar", command=reiniciar, state=DISABLED)
+LMensaje = ttk.Label(ventana, text="")
+tablero = [[ttk.Button(ventana, text="")for x in range(4)]for y in range(4)] # crecion de la matriz
+                                                                        # de 4 x 4 con botones
 
 # añado texto a los botones                              
 num = 1
@@ -73,15 +79,11 @@ for i in range(4):
         #tablero[i][j].grid(row=i, column=j) # con grid en vez de pack, podemos ubicar todo en cuadricula, usando filas y columnas
         
         # pongo los botonees en la interfaz
-        tablero[i][j].place(x = 20 + 50 * j , y = 20 + 50 * i) # con place podemos tener mayor control al separar los botones manualmente
+        tablero[i][j].place(x = 60 + 100 * j , y = 25 + 55 * i) # con place podemos tener mayor control al separar los botones manualmente
         num += 1
-        
+    
+reiniciar() # con reiniciar puedo iniciarlizar las variables necesarias, solo es necesario posicionarlo en este lugar
 # agrego menseje a la interfaz
-LMensaje.place(x = 10, y = 220)
-Breiniciar.place(x = 20, y = 245)
+LMensaje.place(x = 100, y = 235)
+Breiniciar.place(x = 215, y = 255)
 ventana.mainloop()
-
-
-# reducir las lineas haciendo uso de funciones, principalmente las funciones que traten de 
-# deshabilitar o habilitar el tablero dejuego 
-# hacer que lfuncion reiniciar inice el juego y no sea necesario 

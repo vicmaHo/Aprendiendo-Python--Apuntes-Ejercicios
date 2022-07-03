@@ -1,5 +1,5 @@
 from tkinter import *
-
+from tkinter import ttk
 
 def suma():
     a = int(EvalorA.get())
@@ -20,7 +20,7 @@ def resta():
 gui = Tk()
 gui.geometry("200x200")
 gui.title("suma y resta")
-LValorA = Label(gui, text="Valor a")
+LValorA = ttk.Label(gui, text="Valor a")
 LValorB = Label(gui, text="Valor b")
 LResultado = Label(gui, text="Resultado")
 EvalorA = Entry(gui, width=10)

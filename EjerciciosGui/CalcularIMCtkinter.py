@@ -1,5 +1,3 @@
-# import tabnanny
-
 
 # Al ingresar a un centro medico se solicitan los siguientes datos para un paciente:
 # nombre, peso (kg) y altura (mts), se debe calcular el indice de masa corporal
