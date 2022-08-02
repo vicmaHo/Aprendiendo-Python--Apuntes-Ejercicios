@@ -5,6 +5,5 @@ Tendrá contenido sacado de: Aprendizaje autonomo, universidad, cursos, etc.
 
 ## Pendientes
 
-1. Reescribir apuntes
-1. Organizar apuntes
-1. Organizacion general ---> mejorarla.
+1. Mejorar organización
+1. Realizar ejercicios restantes
